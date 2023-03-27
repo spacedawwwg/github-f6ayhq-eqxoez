@@ -29,19 +29,19 @@ import AstroSlot from '../components/AstroSlot.astro';
 		<main>
 			<h1>Issue: "Slot Text!" paragraph should be visible in every example below</h1>
 
-			<p>✅ Works in dev mode only: VueCounter(client:load)</p>
+			<p>✅ Works (dev mode only it seems): VueCounter(client:load)</p>
 			<VueCounter client:load>
 				<p>Slot Text!</p>
 			</VueCounter>
 
-			<p>✅ Works in dev mode only: VueSlot(client:load) -> VueCounter(client:load)</p>
+			<p>✅ Works (dev mode only it seems): VueSlot(client:load) -> VueCounter(client:load)</p>
 			<VueSlot client:load>
 				<VueCounter client:load>
 					<p>Slot Text!</p>
 				</VueCounter>
 			</VueSlot>
 
-			<p>✅ Works in dev mode only: VueSlot(client:load) -> AstroSlot -> VueCounter(client:load)</p>
+			<p>✅ Works (dev mode only it seems): VueSlot(client:load) -> AstroSlot -> VueCounter(client:load)</p>
 			<VueSlot client:load>
 				<AstroSlot>
 					<VueCounter client:load>
