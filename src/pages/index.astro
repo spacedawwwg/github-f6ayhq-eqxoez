@@ -1,0 +1,73 @@
+---
+import VueCounter from '../components/VueCounter.vue';
+import VueSlot from '../components/VueSlot.vue';
+import AstroSlot from '../components/AstroSlot.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<style>
+			html,
+			body {
+				font-family: system-ui;
+				margin: 0;
+			}
+			body {
+				padding: 2rem;
+			}
+			h1 {
+				font-size: 1.5rem;
+				margin: 0 0 3rem;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>Issue: "Slot Text!" paragraph should be visible in every example below</h1>
+
+			<p>✅ Works in dev mode only: VueCounter(client:load)</p>
+			<VueCounter client:load>
+				<p>Slot Text!</p>
+			</VueCounter>
+
+			<p>✅ Works in dev mode only: VueSlot(client:load) -> VueCounter(client:load)</p>
+			<VueSlot client:load>
+				<VueCounter client:load>
+					<p>Slot Text!</p>
+				</VueCounter>
+			</VueSlot>
+
+			<p>✅ Works in dev mode only: VueSlot(client:load) -> AstroSlot -> VueCounter(client:load)</p>
+			<VueSlot client:load>
+				<AstroSlot>
+					<VueCounter client:load>
+						<p>Slot Text!</p>
+					</VueCounter>
+				</AstroSlot>
+			</VueSlot>
+
+			<!-- does not work, slot content does not render when hydrated with "Hydration completed but contains mismatches." -->
+			<p>⛔️ Does not work: VueSlot -> VueCounter(client:load)</p>
+			<VueSlot>
+				<VueCounter client:load>
+					<p>Slot Text!</p>
+				</VueCounter>
+			</VueSlot>
+
+			<!-- does not work, slot content does not render when hydrated with "Hydration completed but contains mismatches." -->
+			<p>⛔️ Does not work: VueSlot -> AstroSlot -> VueCounter(client:load)</p>
+			<VueSlot>
+				<AstroSlot>
+					<VueCounter client:load>
+						<p>Slot Text!</p>
+					</VueCounter>
+				</AstroSlot>
+			</VueSlot>
+
+		</main>
+	</body>
+</html>
