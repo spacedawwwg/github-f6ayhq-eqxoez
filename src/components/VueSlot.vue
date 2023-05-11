@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vue-slot">
     <slot />
   </div>
 </template>
